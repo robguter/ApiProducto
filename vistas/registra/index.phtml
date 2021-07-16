@@ -1,0 +1,204 @@
+<div class="ttlsup">&nbsp;</div>
+<div class="container forma">
+    <div class="row cloginr">
+        
+        <div class="col-lg-1 text-center contlgc">
+            <img class="logoc" src="<?php echo $_Params['ruta_img']; ?>logo.png">
+        </div>
+        
+        <div class="col-lg-11 text-center forma">
+            <video id="video"></video>
+            <br><p><br></p><br>
+            <input type='button' id="boton" value='Tomar foto'>
+            <br><p><br></p><br>
+            <p id="estado"></p>
+            <canvas id="canvas" style="display: none;"></canvas>
+
+            <form class="registrof" name='form1' id='form1' method='post' action=''>
+                <h2>Sign Up</h2>
+                <input type='hidden' value='1' name='enviar' />
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <label for="Nombre">Name</label><span class="Requeri">*</span>
+                        <div>
+                            <input type='text' name='Nombre' 
+                                   value="<?php if (isset($this->datos)) {echo $this->datos['Nomb'];} ?>" 
+                                   placeholder="Indicate your Name"
+                                   minlength="3" maxlength="70"/>
+                            <span id="o-Nombre"></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="Apellido">Last Name</label><span class="Requeri">*</span>
+                        <div>
+                            <input type='text' name='Apellido' 
+                                   value="<?php if (isset($this->datos)) {echo $this->datos['Apel'];} ?>" 
+                                   readonly='readonly' placeholder="Indicate your Last Name"
+                                   minlength="3" maxlength="70"/>
+                            <span id="o-Apellido"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Email">Email</label><span class="Requeri">*</span>
+                    <div>
+                        <input type='text' name='Email' id='Email' 
+                               value="<?php if (isset($this->datos)) {echo $this->datos['Emai'];} ?>" 
+                               readonly='readonly' placeholder="Indicate your Email"
+                               minlength="12" maxlength="250"/>
+                        <span id="o-Email"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="CEmail">Confirm Email</label><span class="Requeri">*</span>
+                    <div>
+                        <input type='text' name='CEmail' 
+                               value="<?php if (isset($this->datos)) {echo $this->datos['CEma'];} ?>" 
+                               placeholder="Confirm your Email"
+                               minlength="12" maxlength="250"/>
+                        <span id="o-Email"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Empresa">Company</label>
+                    <div>
+                        <input type='text' name='Empresa' 
+                               value="<?php if (isset($this->datos)) {echo $this->datos['Empr'];} ?>" 
+                               readonly='readonly' placeholder="Enter the name of your company"
+                               minlength="0" maxlength="70"/>
+                        <span id="o-Empresa"></span>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <label for="Pais">Country</label><span class="Requeri">*</span>
+                        <div>
+                            <input type='text' name='Pais' 
+                                   value="<?php if (isset($this->datos)) {echo $this->datos['Pais'];} ?>" 
+                                   readonly='readonly' placeholder="Indicate your Country"
+                                   minlength="3" maxlength="70"/>
+                            <span id="o-Pais"></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="Ciudad">City</label><span class="Requeri">*</span>
+                        <div>
+                            <input type='text' name='Ciudad' 
+                                   value="<?php if (isset($this->datos)) {echo $this->datos['Ciud'];} ?>" 
+                                   readonly='readonly' placeholder="Indicate your City"
+                                   minlength="3" maxlength="70"/>
+                            <span id="o-Ciudad"></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="Direccion">Address</label><span class="Requeri">*</span>
+                        <div>
+                            <input type='text' name='Direccion' 
+                                value="<?php if (isset($this->datos)) {echo $this->datos['Dire'];} ?>" 
+                                readonly='readonly' placeholder="Indicate your Address"
+                                minlength="3" maxlength="250"/>
+                            <span id="o-Direccion"></span>
+                        </div>
+                    </div>
+                    <div style="font-size: 6pt; line-height: 1.5">&nbsp;</div>
+                </div>
+
+
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <label for="Estado">State</label><span class="Requeri">*</span>
+                        <div>
+                            <input type='text' name='Estado' 
+                                   value="<?php if (isset($this->datos)) {echo $this->datos['Esta'];} ?>" 
+                                   readonly='readonly' placeholder="Indicate your State"
+                                   minlength="3" maxlength="70"/>
+                            <span id="o-Estado">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="Zipcode">Zip Code</label><span class="Requeri">*</span>
+                        <div>
+                            <input type='text' name='Zipcode' 
+                                   value="<?php if (isset($this->datos)) {echo $this->datos['Zipc'];} ?>" 
+                                   readonly='readonly' placeholder="Indicate your Zip Code"
+                                   minlength="4" maxlength="7"/>
+                            <span id="o-Zipcode"></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="Telefono">Telephone</label><span class="Requeri">*</span>
+                        <div>
+                            <input type='text' name='Telefono' 
+                                   value="<?php if (isset($this->datos)) {echo $this->datos['Tele'];} ?>" 
+                                   readonly='readonly' placeholder="Indicate your Teléfono"
+                                   minlength="10" maxlength="13"/>
+                            <span id="o-Telefono"></span>
+                        </div>
+                    </div>
+                    <div style="font-size: 6pt; line-height: 1.5">&nbsp;</div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="Clave">Password</label><span class="Requeri">*</span>
+                    <div>
+                        <input type='password' name='Clave' id='Clave' 
+                               value="<?php if (isset($this->datos)) {echo $this->datos['Clav'];} ?>" 
+                               readonly='readonly' placeholder="Indicate your Clave"
+                               minlength="8" maxlength="12"/>
+                        <span id="o-Clave"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="CClave">Confirm your Password</label><span class="Requeri">*</span>
+                    <div>
+                        <input type='password' name='CClave' 
+                               value="<?php if (isset($this->datos)) {echo $this->datos['CCla'];} ?>" 
+                               readonly='readonly' placeholder="Confirme su clave"
+                               minlength="8" maxlength="12"/>
+                        <span id="o-Clave"></span>
+                    </div>
+                </div>
+                <div class="btn">
+                    <input type='button' value='Sign Up' name='Enviar' readonly='readonly' />
+                </div>
+            </form>
+            <p><br></p>
+            <p><br></p>
+            <p><br></p>
+        <?php
+        if ( isset($this->usrs) && count($this->usrs) ) {
+            ?>
+            <table id="usrs">
+                <tr>
+                    <th>Email</th><th>Nombre</th><th>Zipcode</th><th>Pais</th>
+                </tr>
+            <?php
+            foreach ($this->usrs as $Zipcode) {
+            ?>
+            <tr>
+                <td><?php echo $Zipcode['Email'];   ?></td>
+                <td><?php echo $Zipcode['Nombre'];  ?></td>
+                <td><?php echo $Zipcode['Zipcode']; ?></td>
+                <td><?php echo ($Zipcode['Pais'] == 1) ? "Activo" : "No Activo"; ?></td>
+            </tr>
+            <?php
+            }
+        }else{
+            echo "
+            <script>
+                $('#usrs').fadeOut('slow');
+            </script>
+            ";
+        }
+        ?>
+        </table>
+        <?php
+        ?>
+        </div>
+            
+            
+    </div>
+</div>

@@ -1,0 +1,141 @@
+<div class="ttlsup">&nbsp;</div>
+<div class="container forma">
+    <div class="row cloginr">
+        <div class="col-lg-1 text-center contlgc">
+            <img class="logoc" src="<?php echo $_Params['ruta_img']; ?>logo.png">
+        </div>
+        <div class="col-lg-11 text-center forma">
+            <form class="registrof" name='form1' id='form1' method='post' action="">
+                <h2>Productos</h2>
+                <input type='hidden' name='IdProd'
+                value="<?php if (isset($this->datos)) {echo $this->datos->__GET('IdProd');} ?>" />
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <label for="Codigo">Código</label><span class="Requeri">*</span>
+                        <div>
+                            <input type='text' name='Codigo' 
+                                   value="<?php if (isset($this->datos)) {echo $this->datos->__GET('Codi');} ?>" 
+                                   placeholder="Indicate your Name"
+                                   minlength="3" maxlength="20"/>
+                            <span id="o-Codigo"></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="Descripcion">Descripción<span class="Requeri">*</span></label>
+                        <div>
+                            <input type='text' name='Descripcion' 
+                                   value="<?php if (isset($this->datos)) {echo $this->datos->__GET('Desc');} ?>" 
+                                   placeholder="Indicate your Last Name"
+                                   minlength="3" maxlength="70"/>
+                            <span id="o-Descripcion"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <label for="Marca">Marca</label>
+                        <div>
+                            <input type='text' name='Marca' id='Marca' 
+                                   value="<?php if (isset($this->datos)) {echo $this->datos->__GET('Marc');} ?>" 
+                                   placeholder="Indicate your Marca"
+                                   minlength="2" maxlength="30"/>
+                            <span id="o-Marca"></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="Modelo">Modelo</label>
+                        <div>
+                            <input type='text' name='Modelo' 
+                                   value="<?php if (isset($this->datos)) {echo $this->datos->__GET('Mode');} ?>" 
+                                   placeholder="Confirm your Marca"
+                                   minlength="2" maxlength="30"/>
+                            <span id="o-Marca"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <label for="PrecioU">Precio Unitario<span class="Requeri">*</span></label>
+                        <div>
+                            <input type='text' name='PrecioU' 
+                                   value="<?php if (isset($this->datos)) {echo $this->datos->__GET('Prec');} ?>" 
+                                   placeholder="Enter the name of your company"
+                                   minlength="1" />
+                            <span id="o-PrecioU"></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="Existencia">Existencia<span class="Requeri">*</span></label>
+                        <div>
+                            <input type='text' name='Existencia' 
+                                   value="<?php if (isset($this->datos)) {echo $this->datos->__GET('Exis');} ?>" 
+                                   placeholder="Indicate your Country"
+                                   minlength="1" />
+                            <span id="o-Existencia"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label for="Imagen" style="margin-left: .1%">Imagen</label>
+                    <div>
+                        <input type='text' name='Imagen' 
+                            value="<?php if (isset($this->datos)) {echo $this->datos->__GET('Imag');} ?>" 
+                            placeholder="Indicate your State"
+                            maxlength="155"/>
+                        <span id="o-Imagen"></span>
+                    </div>
+                </div>
+                <div style="font-size: 6pt; line-height: 1.5">&nbsp;</div>
+                <div class="conBtn">
+                    <input type='button' value='Enviar' name='EnviaForm' />
+                </div>
+            </form>
+            <p><br></p>
+            <p><br></p>
+            <p><br></p>
+        </div>
+    </div>
+    <div class="row cloginr">
+        <div class="col-lg-1 text-center contlgc"></div>
+        <div class="col-lg-11 text-center forma">
+            <?php
+            if ($this->_alm) {
+            ?>
+            <div class="form-group col-lg-12">
+                <table class="produt">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Descripcion</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>PrecioU</th>
+                            <th>Existencia</th>
+                            <th>Imagen</th>
+                            <th class="oEdit"><img src="<?php echo PUBLIC_URL . 'img/Editar.png' ?>" >  </th>
+                            <th class="oElim"><img src="<?php echo PUBLIC_URL . 'img/Eliminar.png' ?>" ></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($this->_alm as $r): ?>
+                            <tr>
+                                <td><?php echo $r->__GET('Codigo');      ?></td>
+                                <td><?php echo $r->__GET('Descripcion'); ?></td>
+                                <td><?php echo $r->__GET('Marca');       ?></td>
+                                <td><?php echo $r->__GET('Modelo');      ?></td>
+                                <td><?php echo $r->__GET('PrecioU');     ?></td>
+                                <td><?php echo $r->__GET('Existencia');  ?></td>
+                                <td><img class="imgCld" src="<?php echo $_Params['ruta_img'] . "formup/thumb/" . $r->__GET('Imagen').'.jpg';?>" /></td>
+                                <td class="oEdit" id="<?php echo $r->IdProd; ?>"><img src="<?php echo PUBLIC_URL . 'img/Editar.png' ?>" ></td>
+                                <td class="oElim" id="<?php echo $r->IdProd; ?>"><img src="<?php echo PUBLIC_URL . 'img/Eliminar.png' ?>" ></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+            <?php
+            }
+            ?>
+        </div>
+    </div>
+</div>
